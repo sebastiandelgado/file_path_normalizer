@@ -1,11 +1,13 @@
 require "./file_path_norm"
 require "test/unit"
 
+# NOTE: To run these tests it is necessary to comment out the $stdout.print statement in file_path_norm.rb
+
 class TestFilePaths < Test::Unit::TestCase
  
   def test_simple
 
-  # stuff that shouldn't change
+	# stuff that shouldn't change
 
 	assert_equal("foo/bar", normalize("foo/bar"))
 	assert_equal("foo//bar", normalize("foo//bar"))
@@ -18,6 +20,8 @@ class TestFilePaths < Test::Unit::TestCase
 	assert_equal("foo/bar", normalize("foo/./././bar"))
 	assert_equal("foo/b.ar", normalize("/foo/b.ar"))
 	assert_equal("foo/.bar", normalize("/foo/.bar"))
+	assert_equal("foo/bar", normalize("foo/bar/./"))
+	assert_equal("foo/bar", normalize("/./foo/bar"))
 
 	# double dot
 
