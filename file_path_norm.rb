@@ -1,7 +1,8 @@
 
+
 def normalize(filePath)
 
-  fp = filePath
+	fp = filePath
 
 	# remove relevant '.'
 	while fp =~ /\/\.\/|\A\.\/|\/\.\z/
@@ -17,7 +18,6 @@ def normalize(filePath)
 		fp = fp.gsub(/\A\/?\.\.\//, "")
 	end
 
-	# Remove '/' at string boundaries
 	fp = fp.gsub(/\A\/|\/\z/, "")
 
 	return fp
